@@ -34,6 +34,8 @@ defmodule Gm8Web.Router do
     scope "/court" do
       get("/", CourtController, :index)
       post("/", CourtController, :create)
+      get("/:id", CourtController, :show)
+      delete("/:id", CourtController, :delete)
     end
   end
 end

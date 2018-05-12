@@ -8,9 +8,17 @@ defmodule Gm8.Activities do
     Repo.all(Court)
   end
 
+  def get_court!(id) do
+    Repo.get!(Court, id)
+  end
+
   def create_court(attrs \\ %{}) do
     %Court{}
     |> Court.changeset(attrs)
     |> Repo.insert()
+  end
+
+  def delete_court(court) do
+    Repo.delete(court)
   end
 end

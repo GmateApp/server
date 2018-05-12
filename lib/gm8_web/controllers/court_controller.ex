@@ -19,4 +19,19 @@ defmodule Gm8Web.CourtController do
     |> put_status(:ok)
     |> render("court.json", court: court)
   end
+
+  def show(conn, %{"id" => id}) do
+    court = Activities.get_court!(id)
+
+    conn
+    |> put_status(:ok)
+    |> render("court.json", court: court)
+  end
+
+  def delete(conn, %{"id" => id}) do
+    court = Activities.get_court!(id)
+
+    Activities.delete_court(court)
+    send_resp(conn, :ok, "")
+  end
 end
