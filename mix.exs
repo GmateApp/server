@@ -40,7 +40,7 @@ defmodule Gm8.Mixfile do
       {:gettext, "~> 0.11"},
       {:cowboy, "~> 1.0"},
       {:httpoison, "~> 1.0"},
-      {:secure_random, "~> 0.5"}
+      {:inflex, "~> 1.10.0"}
     ]
   end
 

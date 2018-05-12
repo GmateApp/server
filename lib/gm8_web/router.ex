@@ -33,6 +33,7 @@ defmodule Gm8Web.Router do
 
     scope "/court" do
       get("/", CourtController, :index)
+      post("/", CourtController, :create)
     end
   end
 end
