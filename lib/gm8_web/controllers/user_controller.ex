@@ -24,6 +24,20 @@ defmodule Gm8Web.UserController do
     end
   end
 
+  def show(conn, %{"id" => id}) do
+    user = Auth.get_user(id)
+
+    if user do
+      conn
+      |> put_status(:ok)
+      |> render("user.json", user: user)
+    else
+      conn
+      |> put_status(:not_found)
+      |> render(Gm8Web.ErrorView, "404.json", %{})
+    end
+  end
+
   def auth(conn, %{"data" => %{"token" => access_token}}) do
     {:ok, user} = Auth.authenticate_user(access_token)
 

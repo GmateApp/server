@@ -27,6 +27,8 @@ defmodule Gm8Web.Router do
         get("/", UserController, :me)
         post("/location", UserController, :update_location)
       end
+
+      get("/:id", UserController, :show)
     end
   end
 end
