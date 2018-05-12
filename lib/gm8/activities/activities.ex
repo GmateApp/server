@@ -18,6 +18,12 @@ defmodule Gm8.Activities do
     |> Repo.insert()
   end
 
+  def update_court(%Court{} = court, attrs) do
+    court
+    |> Court.changeset(attrs)
+    |> Repo.update()
+  end
+
   def delete_court(court) do
     Repo.delete(court)
   end

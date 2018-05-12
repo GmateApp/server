@@ -28,6 +28,15 @@ defmodule Gm8Web.CourtController do
     |> render("court.json", court: court)
   end
 
+  def update(conn, %{"id" => id} = params) do
+    court = Activities.get_court!(id)
+    {:ok, court} = Activities.update_court(court, params)
+
+    conn
+    |> put_status(:ok)
+    |> render("court.json", court: court)
+  end
+
   def delete(conn, %{"id" => id}) do
     court = Activities.get_court!(id)
 

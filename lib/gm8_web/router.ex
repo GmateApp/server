@@ -35,6 +35,7 @@ defmodule Gm8Web.Router do
       get("/", CourtController, :index)
       post("/", CourtController, :create)
       get("/:id", CourtController, :show)
+      put("/:id", CourtController, :update)
       delete("/:id", CourtController, :delete)
     end
   end
