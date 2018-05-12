@@ -30,5 +30,9 @@ defmodule Gm8Web.Router do
 
       get("/:id", UserController, :show)
     end
+
+    scope "/court" do
+      get("/", CourtController, :index)
+    end
   end
 end
