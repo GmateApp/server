@@ -2,6 +2,7 @@ defmodule Gm8Web.UserController do
   use Gm8Web, :controller
 
   alias Gm8.Auth
+  alias Gm8.Auth.User
 
   def index(conn, _params) do
     users = Auth.list_users()
@@ -15,6 +16,12 @@ defmodule Gm8Web.UserController do
     conn
     |> put_status(:ok)
     |> render("user.json", user: conn.assigns.current_user)
+  end
+
+  def update_location(conn, params) do
+    with {:ok, %User{}} <- Auth.update_user(conn.assigns.current_user, params) do
+      send_resp(conn, :ok, "")
+    end
   end
 
   def auth(conn, %{"data" => %{"token" => access_token}}) do

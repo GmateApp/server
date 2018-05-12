@@ -13,7 +13,11 @@ defmodule Gm8Web.Router do
 
     scope "/user" do
       get("/", UserController, :index)
-      get("/me", UserController, :me)
+
+      scope "/me" do
+        get("/", UserController, :me)
+      post("/location", UserController, :update_location)
+      end
     end
   end
 end
