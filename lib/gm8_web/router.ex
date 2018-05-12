@@ -7,5 +7,7 @@ defmodule Gm8Web.Router do
 
   scope "/api", Gm8Web do
     pipe_through :api
+
+    post "/authentication", UserController, :auth
   end
 end
