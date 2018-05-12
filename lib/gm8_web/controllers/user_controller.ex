@@ -11,6 +11,12 @@ defmodule Gm8Web.UserController do
     |> render("index.json", users: users)
   end
 
+  def me(conn, _params) do
+    conn
+    |> put_status(:ok)
+    |> render("user.json", user: conn.assigns.current_user)
+  end
+
   def auth(conn, %{"data" => %{"token" => access_token}}) do
     {:ok, user} = Auth.authenticate_user(access_token)
 

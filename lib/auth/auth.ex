@@ -5,6 +5,10 @@ defmodule Gm8.Auth do
   alias Gm8.Auth.User
   alias Gm8.Facebook
 
+  def get_user(id) do
+    Repo.get(User, id)
+  end
+
   def list_users do
     Repo.all(User)
   end

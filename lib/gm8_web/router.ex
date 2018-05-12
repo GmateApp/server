@@ -3,6 +3,7 @@ defmodule Gm8Web.Router do
 
   pipeline :api do
     plug(:accepts, ["json"])
+    plug(Gm8.Auth.CurrentUser)
   end
 
   scope "/api", Gm8Web do
@@ -12,6 +13,7 @@ defmodule Gm8Web.Router do
 
     scope "/user" do
       get("/", UserController, :index)
+      get("/me", UserController, :me)
     end
   end
 end
